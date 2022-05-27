@@ -48,7 +48,7 @@ class _MyNotesState extends State<MyNotes> {
                         physics: const BouncingScrollPhysics(
                             parent: AlwaysScrollableScrollPhysics()),
                         itemBuilder: (BuildContext context, int index) {
-                          return _cards(_ideas.toList()[index]);
+                          return _cards(_ideas.elementAt(index));
                         })))
           ],
         ));
