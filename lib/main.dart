@@ -25,30 +25,32 @@ class MyNotes extends StatefulWidget {
 }
 
 class _MyNotesState extends State<MyNotes> {
+
   Set<String> _ideas = {'собирать мёд', 'продавать шишки'};
 
   @override
   Widget build(BuildContext context) {
-    double _h = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: _appBar(),
         body: Stack(
           children: [
             _backgroundColor(),
-            _textEditIdea(context),
+            _textEditIdea(context, screenWidth),
             Positioned(
-                top: _h / 4.5,
+                top: screenHeight / 4.5,
                 left: 0,
                 right: 0,
                 bottom: 0,
                 child: SizedBox(
-                    height: _h / 8,
+                    height: screenHeight / 8,
                     child: ListView.builder(
                         itemCount: _ideas.length,
                         physics: const BouncingScrollPhysics(
                             parent: AlwaysScrollableScrollPhysics()),
                         itemBuilder: (BuildContext context, int index) {
-                          return _cards(_ideas.elementAt(index));
+                          return _cards(_ideas.elementAt(index), screenWidth);
                         })))
           ],
         ));
@@ -83,10 +85,9 @@ class _MyNotesState extends State<MyNotes> {
     );
   }
 
-  Widget _textEditIdea(BuildContext context) {
-    double _w = MediaQuery.of(context).size.width;
+  Widget _textEditIdea(BuildContext context, width) {
     return Container(
-        padding: EdgeInsets.fromLTRB(_w / 8, _w / 7, _w / 8, 0),
+        padding: EdgeInsets.fromLTRB(width / 8, width / 7, width / 8, 0),
         child: TextField(
           controller: TextEditingController(),
           keyboardType: TextInputType.text,
@@ -110,13 +111,12 @@ class _MyNotesState extends State<MyNotes> {
         ));
   }
 
-  Widget _cards(String title) {
-    double _w = MediaQuery.of(context).size.width;
+  Widget _cards(String title, width) {
     return Container(
-      margin: EdgeInsets.fromLTRB(_w / 20, _w / 20, _w / 20, 0),
-      padding: EdgeInsets.all(_w / 20),
-      height: _w / 4.4,
-      width: _w,
+      margin: EdgeInsets.fromLTRB(width / 20, width / 20, width / 20, 0),
+      padding: EdgeInsets.all(width / 20),
+      height: width / 4.4,
+      width: width,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(.5),
@@ -127,12 +127,12 @@ class _MyNotesState extends State<MyNotes> {
         children: [
           CircleAvatar(
             backgroundColor: Colors.transparent,
-            radius: _w / 15,
+            radius: width / 15,
             child: Image.asset(Strings.imageStar),
           ),
           Container(
             alignment: Alignment.center,
-            width: _w / 2,
+            width: width / 2,
             child: Text(
               title,
               style: TextStyle(
