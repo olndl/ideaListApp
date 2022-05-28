@@ -85,7 +85,7 @@ class _MyNotesState extends State<MyNotes> {
     );
   }
 
-  Widget _textEditIdea(BuildContext context, width) {
+  Widget _textEditIdea(BuildContext context, double width) {
     return Container(
         padding: EdgeInsets.fromLTRB(width / 8, width / 7, width / 8, 0),
         child: TextField(
@@ -111,7 +111,7 @@ class _MyNotesState extends State<MyNotes> {
         ));
   }
 
-  Widget _cards(String title, width) {
+  Widget _cards(String title, double width) {
     return Container(
       margin: EdgeInsets.fromLTRB(width / 20, width / 20, width / 20, 0),
       padding: EdgeInsets.all(width / 20),
