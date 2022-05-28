@@ -25,7 +25,6 @@ class MyNotes extends StatefulWidget {
 }
 
 class _MyNotesState extends State<MyNotes> {
-
   Set<String> _ideas = {'собирать мёд', 'продавать шишки'};
 
   @override
@@ -57,20 +56,17 @@ class _MyNotesState extends State<MyNotes> {
   }
 
   _appBar() {
-    return PreferredSize(
-      preferredSize: const Size(double.infinity, kToolbarHeight),
-      child: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Text(
-          Strings.appTitle,
-          style: TextStyle(
-              fontSize: 27,
-              color: Colors.black.withOpacity(.6),
-              fontWeight: FontWeight.w700),
-        ),
-        centerTitle: true,
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      title: Text(
+        Strings.appTitle,
+        style: TextStyle(
+            fontSize: 27,
+            color: Colors.black.withOpacity(.6),
+            fontWeight: FontWeight.w700),
       ),
+      centerTitle: true,
     );
   }
 
