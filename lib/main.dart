@@ -42,15 +42,13 @@ class _MyNotesState extends State<MyNotes> {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                child: SizedBox(
-                    height: screenHeight / 8,
-                    child: ListView.builder(
-                        itemCount: _ideas.length,
-                        physics: const BouncingScrollPhysics(
-                            parent: AlwaysScrollableScrollPhysics()),
-                        itemBuilder: (BuildContext context, int index) {
-                          return _cards(_ideas.elementAt(index), screenWidth);
-                        })))
+                child: ListView.builder(
+                    itemCount: _ideas.length,
+                    physics: const BouncingScrollPhysics(
+                        parent: AlwaysScrollableScrollPhysics()),
+                    itemBuilder: (BuildContext context, int index) {
+                      return _cards(_ideas.elementAt(index), screenWidth);
+                    }))
           ],
         ));
   }
